@@ -29,9 +29,9 @@ const userNotFoundErrorMessage = 'Пользователь по указанно
 const forbiddenErrorMessage = 'Вы не можете удалять фильмы, сохраненные другими пользователями';
 
 // сообщения о статусах 200 и 201
-const userCreateStatusMessage = 'Пользователь успешно создан';
-const userUpdateStatusMessage = 'Данные пользователя успешно обновлены';
-const movieDeleteStatusMessage = 'Фильм успешно удален из вашей коллекции';
+const userCreateStatusMessage = { message: 'Пользователь успешно создан' };
+const userUpdateStatusMessage = { message: 'Данные пользователя успешно обновлены' };
+const movieDeleteStatusMessage = { message: 'Фильм успешно удален из вашей коллекции' };
 
 module.exports = {
   OK,

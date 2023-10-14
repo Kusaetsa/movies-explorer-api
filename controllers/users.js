@@ -8,7 +8,7 @@ const ConflictError = require('../errors/ConflictError');
 const NotFoundError = require('../errors/NotFoundError');
 const {
   OK, CREATED, badRequestErrorMessage, conflictErrorMessage, serverErrorMessage,
-  userNotFoundErrorMessage, userCreateStatusMessage, userUpdateStatusMessage,
+  userNotFoundErrorMessage,
 } = require('../utills/constants');
 
 // регистрация пользователя
@@ -18,8 +18,8 @@ function createUser(req, res, next) {
     .then((hash) => User.create({
       email, name, password: hash,
     }))
-    .then(() => {
-      res.status(CREATED).send(userCreateStatusMessage);
+    .then((user) => {
+      res.status(CREATED).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -67,7 +67,7 @@ function updateUserInfo(req, res, next) {
       if (!user) {
         throw new NotFoundError(userNotFoundErrorMessage);
       }
-      return res.status(OK).send(userUpdateStatusMessage);
+      return res.status(OK).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {

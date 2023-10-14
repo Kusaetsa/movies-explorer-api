@@ -22,9 +22,11 @@ function createMovie(req, res, next) {
   Movie.create(movieData)
     .then((movie) => {
       res.status(CREATED).send(movie);
+      console.log(movie);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
+        console.log(err);
         return next(new BadRequestError(badRequestErrorMessage));
       }
       return next(serverErrorMessage);
